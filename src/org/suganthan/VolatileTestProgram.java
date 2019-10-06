@@ -1,5 +1,8 @@
 package org.suganthan;
 
+/**
+ * Reference: https://www.youtube.com/watch?v=SC2jXxOPe5E
+ */
 public class VolatileTestProgram {
 
     private static boolean running = false;

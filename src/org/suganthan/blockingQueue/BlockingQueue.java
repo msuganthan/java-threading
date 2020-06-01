@@ -14,30 +14,32 @@ public class BlockingQueue<T> {
     }
 
     public void enqueue(T item) throws InterruptedException {
-        //wait for queue to have space
-        while (size == capacity)
-            wait();
+        synchronized (lock) {
+            //wait for queue to have space
+            while (size == capacity)
+                lock.wait();
 
-        //reset tail to the beginning if the tail is already
-        //at the end of the backing array
-        if (tail == capacity)
-            tail = 0;
+                //reset tail to the beginning if the tail is already
+                //at the end of the backing array
+                if (tail == capacity)
+                    tail = 0;
 
-        //place the item in the array
-        array[tail] = item;
-        size++;
-        tail++;
+                //place the item in the array
+                array[tail] = item;
+                size++;
+                tail++;
 
 
-        //don't forget to notify any other threads waiting on
-        //a change in value of size. There might be consumer's
-        //waiting for the queue to have atleast one element.
-        notifyAll();
+                //don't forget to notify any other threads waiting on
+                //a change in value of size. There might be consumer's
+                //waiting for the queue to have atleast one element.
+                lock.notifyAll();
+        }
 
     }
 
     public T dequeue() throws InterruptedException {
-        T item = null;
+        T item;
 
         synchronized (lock) {
             //wait for atleast one item to be enqueued

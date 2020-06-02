@@ -1,0 +1,32 @@
+Enqueue
+=======
+When the size of the queue == capacity then we know we'll need to block the caller of the method.
+
+while (size == capacity)
+    lock.wait();
+
+We can do so by appropriately calling wait method in a while loop. The while loop is
+conditioned on the size of the queue being equal to the max capacity. The loops predicate
+would become false, as soon as another thread performs an dequeue.
+
+Note that whenever we test for the value of the size variable, we also need to make sure
+that no other thread is manipulating the size variable. This can be achieved by the
+synchronized keyword as it'll only allow a single thread to invoke the
+enqueue/dequeue methods on the queue object.
+
+Note that in the end we are calling notifyAll() method.
+
+Since we just added an item to the queue, it is possible that a consumer thread is
+blocked in the dequeue method of the queue class waiting for an item to
+become available so it's necessary we send a signal to wake up any waiting threads.
+
+
+If no thread is waiting, then the signal will simply go unnoticed and be ignored,
+which wouldn't affect the correct working of our class.
+
+Dequeue
+========
+We need to block the caller of the dequeue method if there's nothing to dequeue i.e. size == 0
+
+We to call notifyAll() since if the queue were full then there might be producer threads
+blocked in the enqueue method.

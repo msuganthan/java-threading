@@ -1,0 +1,29 @@
+1. We will use an object of the Lock class and pretend it doesn't expose the wait() and notify() methods.
+2. Only provides mutual exclusion similar to a theoretical mutex.
+
+Busy-wait solution: Without ability to wait or signal the implication is, a blocked thread will constantly poll in a loop
+for the condition to become true before making progress.
+
+Enqueue:
+========
+
+If the size of the queue == capacity then we know we need to block the caller of the method
+until the queue has space for a new item.
+
+Since the mutex only allows locking, we give up the mutex at this point.
+
+    lock.lock();
+    while(size == capacity) {
+        // Release the mutex to give other threads
+        lock.unlock();
+        // Reacquire the mutex before checking the condition
+        lock.lock();
+    }
+
+The weird looking while loop construct, where we release the lock and then immediately attempt
+to re-acquire it.
+
+Convince yourself that whenever we test the while loop condition size == capacity, we do so
+while holding the mutex! Also it may not be immediately obvious but a differnt thread can
+acquire the mutex just when thread release the mutex and attempts to re-acquire it within the
+loop.

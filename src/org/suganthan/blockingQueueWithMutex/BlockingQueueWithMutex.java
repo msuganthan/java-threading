@@ -20,6 +20,12 @@ public class BlockingQueueWithMutex<T> {
     public void enqueue(T item) throws InterruptedException {
         lock.lock();
 
+        /**
+         * Convince yourself that whenever we test the while loop condition size == capacity, we do so
+         * while holding the mutex! Also it may not be immediately obvious but a different thread can
+         * acquire the mutex just when thread release the mutex and attempts to re-acquire it within the
+         * loop.
+         */
         while(size == capacity) {
             //Release the mutex to give other threads
             lock.unlock();

@@ -1,0 +1,24 @@
+Task
+====
+
+    A task is a logical unit of work. Usually a task should be independent of other tasks
+    so that it can be completed by a single thread. A task can be represented by an object of
+    class implementing the Runnable interface.
+
+    We consider HTTP requests being fielded by a web-server as tasks that need to be processed.
+    As database server handling client queries can similarly be thought of a independent tasks.
+
+Executor Framework:
+===================
+
+    In Java, the primary abstraction for executing logical tasks units is the Executor framework
+    and not the Thread class. The classes in the Executor Framework separate out:
+
+    * Task Submission
+    * Task Execution
+
+    Java offer three interfaces which classes can implement to manage the thread lifecycle. These are:
+
+    * Executor interface --> Forms the basis for the asynchronous task execution framework in Java
+    * ExecutorService
+    * ScheduleExecutorService

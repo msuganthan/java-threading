@@ -1,0 +1,27 @@
+Thread pool:
+============
+Thread pool consists of homogenous worker threads that are assigned to execute tasks. Once
+a worker thread finishes a task, it is returned to the pool. Usually, thread pools are
+bound to a queue from which tasks are dequeued for execution by worker thread.
+
+The thread pool can be tuned for the size of the threads its holds. A thread pool may also
+replace a thread if it dies of an unexpected exception. Using the thread-pool immediately
+alleviates from the ails of manual creation of threads.
+
+* There is no latency when a request is received and processed by a thread because no
+    time is lost in creating a thread.
+* The system will not go out of memory because threads are not created without any limits
+* Fine tuning the thread pool will allow us to control the throughput of the system.
+* The application will degrade gracefully if the system is under load.
+
+    void receiveAndExecutrClientOrdersBest() {
+        int expectedCo ncurrentOrders = 100;
+        Executor executor = Executors.newFixedThreadPool(expectedConcurrentOrders);
+
+        while(true) {
+            final Order order = waitForOrder();
+            executor.execute(() -> {
+                order.execute();
+            })
+        }
+    }

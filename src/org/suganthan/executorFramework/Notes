@@ -20,5 +20,6 @@ Executor Framework:
     Java offer three interfaces which classes can implement to manage the thread lifecycle. These are:
 
     * Executor interface --> Forms the basis for the asynchronous task execution framework in Java
+        Executors are based on consumer-producer patterns. The tasks we produce for processing are consumer by threads.
     * ExecutorService
     * ScheduleExecutorService

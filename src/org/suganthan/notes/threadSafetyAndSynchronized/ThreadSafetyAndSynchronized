@@ -51,3 +51,11 @@ Synchronized:
         of the object, only one will get access, and the other two will block.
 
         Refer to ThreadSafetyExample.java
+
+        If we synchronized on a different object other than the this object, which is only possible for the getName method
+        given the way we have written the code, the critical section of the program become protected by two differnt locks.
+        In tat scenario, since setName and resetName would have been synchronized on `this` object only one of two methods
+        could be executed concurrently. However, getName would be synchronized independently of the other two
+        methods and can be executed alongside one of them.
+
+        Refer to ThreadSafetyWithTwoObjectsExample.java

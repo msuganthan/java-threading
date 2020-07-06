@@ -59,3 +59,10 @@ Synchronized:
         methods and can be executed alongside one of them.
 
         Refer to ThreadSafetyWithTwoObjectsExample.java
+
+        With synchronized keyword, Java forces you to implicitly acquire and release the monitor-lock for the object with the same method.
+
+        One can't explicitly acquire and release the monitor in different method.
+
+        Here, the same thread will acquire and release the monitor!!!
+        In Semaphore we could acquire and release monitor in different methods or by different threads.

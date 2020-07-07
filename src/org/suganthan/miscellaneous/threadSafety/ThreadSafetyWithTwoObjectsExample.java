@@ -1,14 +1,14 @@
-package org.suganthan.miscellaneous;
+package org.suganthan.miscellaneous.threadSafety;
 
-public class ThreadSafetyExample {
+public class ThreadSafetyWithTwoObjectsExample {
 
+    /**
+     * First and third thread execution happens at the same time.
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
-        final Employee employee1 = new Employee();
-
-        //To understand this program much better, uncomment the employee2 and employee3 object and run the second and third thread using the second and third
-        //Object respectively
-        /*final Employee employee2 = new Employee();
-        final Employee employee3 = new Employee();*/
+        final EmployeeSafetyWithTwoObjects employee1 = new EmployeeSafetyWithTwoObjects();
 
         Thread thread1 = new Thread(() -> {
             System.out.println("Invoking first thread");
@@ -47,11 +47,14 @@ public class ThreadSafetyExample {
         thread1.join();
         thread2.join();
         thread3.join();
+
+
     }
 }
 
-class Employee {
+class EmployeeSafetyWithTwoObjects {
     String name;
+    Object lock = new Object();
 
     public synchronized void setName(String name) throws InterruptedException {
         Thread.sleep(10000);
@@ -64,9 +67,10 @@ class Employee {
     }
 
     public String getName() throws InterruptedException {
-        synchronized (this) {
+        synchronized (lock) {
             Thread.sleep(10000);
             return this.name;
         }
     }
+
 }

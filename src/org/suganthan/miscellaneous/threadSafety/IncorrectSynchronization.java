@@ -1,4 +1,4 @@
-package org.suganthan.miscellaneous;
+package org.suganthan.miscellaneous.threadSafety;
 
 /**
  * We synchronize on a Boolean object in the first thread but sleep before we call wait() on the object.

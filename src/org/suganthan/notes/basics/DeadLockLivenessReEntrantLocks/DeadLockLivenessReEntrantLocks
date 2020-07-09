@@ -45,3 +45,7 @@ Dead lock example:
     T2 acquires MUTEX_B
 
     both threads are blocked now
+
+Reentrant Lock:
+===============
+    Re-entrant Locks allow for re-locking or re-entering of the synchronization lock. 

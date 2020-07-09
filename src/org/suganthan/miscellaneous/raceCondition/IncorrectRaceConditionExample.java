@@ -21,9 +21,19 @@ class IncorrectRaceCondition {
              * print the variable out, it value changed by the modifier thread. Some of the printed values aren't
              * divisible by 5 which verifies the existence of a race condition in the code.
              */
-            if (randInt % 5 == 0) {
+            /*if (randInt % 5 == 0) {
                 if (randInt % 5 != 0)
                     System.out.println(randInt);
+            }*/
+
+            /**
+             * correct implementation
+             */
+            synchronized (this) {
+                if (randInt % 5 == 0) {
+                    if (randInt % 5 != 0)
+                        System.out.println(randInt);
+                }
             }
             i--;
         }
@@ -32,8 +42,12 @@ class IncorrectRaceCondition {
     void modifier() {
         int i = 1000000;
         while (i != 0) {
-            randInt = random.nextInt(1000);
-            i--;
+            /*randInt = random.nextInt(1000);
+            i--;*/
+            synchronized (this) {
+                randInt = random.nextInt(1000);
+                i--;
+            }
         }
     }
 

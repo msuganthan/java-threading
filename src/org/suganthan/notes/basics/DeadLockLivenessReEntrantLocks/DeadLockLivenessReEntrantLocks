@@ -48,4 +48,4 @@ Dead lock example:
 
 Reentrant Lock:
 ===============
-    Re-entrant Locks allow for re-locking or re-entering of the synchronization lock. 
+    Re-entrant Locks allow for re-locking or re-entering of the synchronization lock.

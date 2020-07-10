@@ -10,7 +10,7 @@ public class CountingSemaphore {
 
     public CountingSemaphore(int maxCount, int initialPermits) {
         this.maxCount = maxCount;
-        this.usedPermits = initialPermits;
+        this.usedPermits = this.maxCount - initialPermits;
     }
 
     public synchronized void acquire() throws InterruptedException {

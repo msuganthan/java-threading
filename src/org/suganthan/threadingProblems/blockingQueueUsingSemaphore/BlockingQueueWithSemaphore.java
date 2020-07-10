@@ -1,5 +1,9 @@
 package org.suganthan.threadingProblems.blockingQueueUsingSemaphore;
 
+/**
+ * I don't understand this.
+ * @param <T>
+ */
 public class BlockingQueueWithSemaphore<T> {
     T[] array;
     int size = 0;

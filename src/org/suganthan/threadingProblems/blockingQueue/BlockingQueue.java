@@ -1,67 +1,91 @@
 package org.suganthan.threadingProblems.blockingQueue;
 
 public class BlockingQueue<T> {
-    T[] array;
     Object lock = new Object();
-    int size = 0;
-    int capacity;
-    int head = 0;
-    int tail = 0;
+    private T[] array;
+    private int capacity; //==> determine the size
+    private int size = 0; //==> Moving pointer
+    private int head; //==> pointer for dequeue
+    private int tail; //==> pointer for enqueue
 
-    public BlockingQueue(int capacity) {
+    BlockingQueue(int capacity) {
         array = (T[]) new Object[capacity];
         this.capacity = capacity;
     }
 
     public void enqueue(T item) throws InterruptedException {
         synchronized (lock) {
-            //wait for queue to have space
-            while (size == capacity)
+
+            if (size == capacity)
                 lock.wait();
 
-                //reset tail to the beginning if the tail is already
-                //at the end of the backing array
-                if (tail == capacity)
-                    tail = 0;
+            if (tail == capacity)
+                tail = 0;
 
-                //place the item in the array
-                array[tail] = item;
-                size++;
-                tail++;
-
-
-                //don't forget to notify any other threads waiting on
-                //a change in value of size. There might be consumer's
-                //waiting for the queue to have atleast one element.
-                lock.notifyAll();
+            array[tail] = item;
+            size++;
+            tail++;
+            lock.notifyAll();
         }
+    }
 
+    public synchronized void enqueue_1(T item) throws InterruptedException {
+        //synchronized (lock) {
+
+            if (size == capacity)
+                //lock.wait();
+                wait();
+
+            if (tail == capacity)
+                tail = 0;
+
+            array[tail] = item;
+            size++;
+            tail++;
+            //lock.notifyAll();
+            notify();
+        //}
     }
 
     public T dequeue() throws InterruptedException {
-        T item;
-
+        T item = null;
         synchronized (lock) {
-            //wait for atleast one item to be enqueued
-            while(size == 0)
+            if (size == 0)
                 lock.wait();
 
-            //reset head to start of array if its past the array
             if (head == capacity)
                 head = 0;
 
-            //store the reference to the object being dequeued
-            //and overwrite with null
             item = array[head];
             array[head] = null;
             head++;
             size--;
 
-            //don't forget to call notify, there might be another thread
-            //blocked in the enqueue method.
             lock.notifyAll();
         }
-
         return item;
     }
+
+    public synchronized T dequeue_1() throws InterruptedException {
+        T item = null;
+        //synchronized (lock) {
+            if (size == 0)
+                //lock.wait();
+                wait();
+
+            if (head == capacity)
+                head = 0;
+
+            item = array[head];
+            array[head] = null;
+            head++;
+            size--;
+
+            //lock.notifyAll();
+            notifyAll();
+        //}
+        return item;
+    }
+
+
 }

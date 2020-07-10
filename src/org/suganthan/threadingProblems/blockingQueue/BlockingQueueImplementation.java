@@ -8,7 +8,7 @@ public class BlockingQueueImplementation {
         Thread t1 = new Thread(() -> {
            try {
                for (int i = 0; i < 50; i++) {
-                   queue.enqueue(new Integer(i));
+                   queue.enqueue_1(new Integer(i));
                    System.out.println("enqueued "+i);
                }
            } catch (InterruptedException e) {
@@ -19,7 +19,7 @@ public class BlockingQueueImplementation {
         Thread t2 = new Thread(() -> {
             try {
                 for (int i = 0; i < 25; i++) {
-                    System.out.println("Thread 2 dequeued: "+ queue.dequeue());
+                    System.out.println("Thread 2 deQueued: "+ queue.dequeue_1());
                 }
             } catch (InterruptedException ie) {
 
@@ -29,7 +29,7 @@ public class BlockingQueueImplementation {
         Thread t3 = new Thread(() -> {
             try {
                 for (int i = 0; i < 25; i++) {
-                    System.out.println("Thread 3 dequeued: " + queue.dequeue());
+                    System.out.println("Thread 3 deQueued: " + queue.dequeue_1());
                 }
             } catch (InterruptedException ie) {
 
@@ -37,7 +37,6 @@ public class BlockingQueueImplementation {
         });
 
         t1.start();
-        Thread.sleep(4000);
         t2.start();
         t2.join();
 

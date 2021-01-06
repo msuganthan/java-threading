@@ -12,34 +12,23 @@ class IncorrectSemaphore {
     public static void example() throws InterruptedException {
         final Semaphore semaphore = new Semaphore(1);
 
-        Thread badThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        System.out.println("Bad thread started");
-                        semaphore.acquire();
-                    } catch (InterruptedException interruptedException) {
-                        throw new RuntimeException("Exception happens at runtime");
-                    }
-                }
-            }
-        });
-
-        badThread.start();
-
-        Thread.sleep(1000);
-
-        final Thread goodThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Good thread patiently waiting to be signaled");
+        Thread badThread = new Thread(() -> {
+            while (true) {
                 try {
+                    System.out.println("Bad thread started");
                     semaphore.acquire();
                 } catch (InterruptedException interruptedException) {
-
                 }
+                throw new RuntimeException("Exception happens at runtime");
             }
+        });
+        badThread.start();
+        Thread.sleep(1000);
+        final Thread goodThread = new Thread(() -> {
+            System.out.println("Good thread patiently waiting to be signaled");
+            try {
+                semaphore.acquire();
+            } catch (InterruptedException interruptedException) {}
         });
 
         goodThread.start();

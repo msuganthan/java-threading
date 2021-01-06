@@ -1,7 +1,5 @@
 package org.suganthan.miscellaneous.semaphores;
 
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
-
 import java.util.concurrent.Semaphore;
 
 public class CorrectSemaphoreExamples {
@@ -14,25 +12,22 @@ class CorrectSemaphore {
     public static void example() throws InterruptedException {
         final Semaphore semaphore = new Semaphore(1);
 
-        Thread badThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
+        Thread badThread = new Thread(() -> {
+            while (true) {
+                try {
+                    semaphore.acquire();
                     try {
-                        semaphore.acquire();
-                        try {
-                            throw new RuntimeException("");
-                        } catch (Exception e) {
-                            // handle any program logic exception and exit the function
-                            return;
-                        } finally {
-                            System.out.println("Bad thread releasing semahore.");
-                            semaphore.release();
-                        }
-
-                    } catch (InterruptedException ie) {
-                        // handle thread interruption
+                        throw new RuntimeException("");
+                    } catch (Exception e) {
+                        // handle any program logic exception and exit the function
+                        return;
+                    } finally {
+                        System.out.println("Bad thread releasing semahore.");
+                        semaphore.release();
                     }
+
+                } catch (InterruptedException ie) {
+                    // handle thread interruption
                 }
             }
         });

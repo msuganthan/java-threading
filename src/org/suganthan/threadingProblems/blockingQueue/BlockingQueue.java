@@ -15,7 +15,6 @@ public class BlockingQueue<T> {
 
     public void enqueue(T item) throws InterruptedException {
         synchronized (lock) {
-
             if (size == capacity)
                 lock.wait();
 
@@ -29,26 +28,8 @@ public class BlockingQueue<T> {
         }
     }
 
-    public synchronized void enqueue_1(T item) throws InterruptedException {
-        //synchronized (lock) {
-
-            if (size == capacity)
-                //lock.wait();
-                wait();
-
-            if (tail == capacity)
-                tail = 0;
-
-            array[tail] = item;
-            size++;
-            tail++;
-            //lock.notifyAll();
-            notify();
-        //}
-    }
-
     public T dequeue() throws InterruptedException {
-        T item = null;
+        T item;
         synchronized (lock) {
             if (size == 0)
                 lock.wait();
@@ -65,27 +46,4 @@ public class BlockingQueue<T> {
         }
         return item;
     }
-
-    public synchronized T dequeue_1() throws InterruptedException {
-        T item = null;
-        //synchronized (lock) {
-            if (size == 0)
-                //lock.wait();
-                wait();
-
-            if (head == capacity)
-                head = 0;
-
-            item = array[head];
-            array[head] = null;
-            head++;
-            size--;
-
-            //lock.notifyAll();
-            notifyAll();
-        //}
-        return item;
-    }
-
-
 }

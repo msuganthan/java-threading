@@ -134,6 +134,4 @@ class UnisexBathroom {
         Thread.sleep(10000);
         System.out.println(name + " done using bathroom ");
     }
-
-
 }

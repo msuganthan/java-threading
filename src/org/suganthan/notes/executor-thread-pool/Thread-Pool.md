@@ -1,0 +1,2 @@
+**newFixedThreadPool**: This type of pool has a fixed number of threads and any number of task can be submitted
+execution. Once a thread finishes a task, it can reused to execute another task from the queue.

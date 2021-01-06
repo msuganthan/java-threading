@@ -1,6 +1,5 @@
 package org.suganthan.threadingProblems.blockingQueueUsingSemaphore;
 
-//ToDo: Understand this program very well.
 public class TestBlockingSemaphore {
 
     public static void main(String[] args) throws InterruptedException {

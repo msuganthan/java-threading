@@ -10,7 +10,9 @@ public class BlockingQueueWithSemaphore<T> {
     int capacity;
     int head = 0;
     int tail = 0;
-
+    /**
+     * This binary semaphore will make sure only a single thread is active in the critical section at a given time.
+     */
     CountingSemaphore semLock = new CountingSemaphore(1, 1);
     CountingSemaphore semProducer;
     CountingSemaphore semConsumer;

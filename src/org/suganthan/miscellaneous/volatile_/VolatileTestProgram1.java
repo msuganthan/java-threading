@@ -1,4 +1,4 @@
-package org.suganthan;
+package org.suganthan.miscellaneous.volatile_;
 
 /**
  * Reference: https://www.youtube.com/watch?v=SC2jXxOPe5E

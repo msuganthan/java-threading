@@ -1,4 +1,4 @@
-package org.suganthan;
+package org.suganthan.miscellaneous.volatile_;
 
 /**
  * Reference: https://www.youtube.com/watch?v=SC2jXxOPe5E
@@ -18,7 +18,7 @@ package org.suganthan;
 public class VolatileTestProgram {
 
     //private static boolean running = false;
-    private static volatile boolean RUNNING = false;
+    private static boolean RUNNING = false;
 
     public static void main(String[] args) throws Exception{
 

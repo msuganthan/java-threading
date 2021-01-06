@@ -15,10 +15,7 @@ public class TaskRunner {
     class Reader extends Thread {
         @Override
         public void run() {
-            while(!ready) {
-                System.out.println("I am waiting...");
-                Thread.yield();
-            }
+            while(!ready) {}
             System.out.println("Print something");
         }
     }

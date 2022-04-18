@@ -1,4 +1,4 @@
-package org.suganthan.revise.basics;
+package org.suganthan.revise.basics.joiningthread;
 
 public class JoiningThread {
     public static void main(String[] args) throws InterruptedException {

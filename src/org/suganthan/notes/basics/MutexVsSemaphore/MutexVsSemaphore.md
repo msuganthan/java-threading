@@ -1,23 +1,7 @@
-Mutex:
-======
+**_Mutex_**: Mutex allows only a single thread to access a resource or critical section. Once a thread acquires mutex, all other threads attempting to acquire the same mutex are blocked until the first thread releases the mutex.
 
-    Mutex allows only a single thread to access a resource or critical section.
+**_Semaphore_**: Semaphore, on the other hand, is used for limiting access to a collection of resources. Think of semaphore as having a limited number of permits to give out. If the sempahore has given out all the permits it has, then any new thread that comes along requesting for a permit will be blocked, till an earlier thread with a permit returns it to the semaphore. **A typical example would be a pool of database connections that can be handed out to requesting thread** 
 
-    Once a thread acquires mutex, all other threads attempting to acquire the same mutex
-    are blocked until the first thread releases the mutex.
+A semaphore with a single permit is called a **binary semaphore** and often thought of as an equivalent of a mutex, which isn't completely correct. Semaphores can also be used for signaling among threads. This is an important distinction as it allows threads to **cooperatively work towards completing a tasks**.
 
-Semaphore:
-===========
-
-    Semaphore, on the other hand, is used for limiting access to a collection of resources.
-    Semaphores can also be used for signaling among threads. This is an important distinction as it allows threads
-    to cooperatively work towards completing a tasks.
-
-Difference:
-============
-
-    In case of a mutex the same thread must call acquire and subsequent release on the mutex, whereas in case of
-    a binary semaphore, different threads can call acquire and release on the semaphore.
-
-    A mutex is owned by the thread acquiring it till the point the owning-thread releases it,
-    whereas for a semaphore there's no notion of ownership.
+**_Difference_**: Semaphore can potentially act as a mutex if the permits it can give out is set to 1. However, the most important difference between the two is that in case of a mutes the same thread must call acquire and subsequent release on the mutex whereas in case of a binary semaphore, different thread can call acquire and release on the semaphore. Different threads can call acquire and release on the semaphore.

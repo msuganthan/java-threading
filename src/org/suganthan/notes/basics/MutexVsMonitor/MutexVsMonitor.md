@@ -1,5 +1,3 @@
-When Mutual Exclusion isn't Enough:
-===================================
+**_Monitor_**: Monitor is a mutex and then some.
 
-    Concisely, a monitor is a mutex and then some. Monitors are generally language level constructs whereas mutex and
-    semaphore are lower-level or OS provided constructs.
+In a multithreaded applications, a thread needs to wait for some program predicate to be true before it can proceed forward. Think about a producer/consumer application. If the producer hasn't produced anything the consumer can't consume anything, so the consumer must **wait on** a predicate that lets the consumer know that something has indeed been produced.

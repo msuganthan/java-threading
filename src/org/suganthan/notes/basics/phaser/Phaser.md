@@ -1,0 +1,5 @@
+The `Phaser` class is an extension of the functionality offered by `CyclicBarrier` and `CountDownLatch` classes and is more flexible in use. One stark difference is that the `Phaser` class allows the number of registered parties that synchronize on a phaser to vary over time. The `Phaser` can be repeatedly awaited similar to a `CyclicBarrier`
+
+Refer PhaserDemo_1.java
+
+**Phases of a Phaser**: The starting phase is numbered **0**, when all the registered parties arrive at the barrier, the `Phaser` instance advances to the next phase which is **1**. This pattern continues until the phase reaches the maximum allowed `Integer.MAX_VALUE` and the wraps to zero. The phase numbered **0** is never arrived at by synchronizing parties. The synchronization methods return the arrival phase which starts at 1. 

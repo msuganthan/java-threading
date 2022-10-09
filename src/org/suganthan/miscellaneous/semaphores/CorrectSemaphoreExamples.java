@@ -36,15 +36,12 @@ class CorrectSemaphore {
 
         Thread.sleep(1000);
 
-        final Thread goodThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Good thread patiently waiting to be signaled");
-                try {
-                    semaphore.acquire();
-                } catch (InterruptedException interruptedException) {
+        final Thread goodThread = new Thread(() -> {
+            System.out.println("Good thread patiently waiting to be signaled");
+            try {
+                semaphore.acquire();
+            } catch (InterruptedException interruptedException) {
 
-                }
             }
         });
 

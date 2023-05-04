@@ -42,3 +42,28 @@ Thread.sleep(1000);
 ```
 
 ### Interrupting Threads
+
+Imagine a thread sleeps forever or goes into an infinite loop, it can prevent the spawning thread from moving ahead because of the join call. Java allows us to force such a misbehaved thread to come to its sense by interrupting it.
+
+```java
+class ThreadInterruptExample {
+    public static void main(String[] args) {
+        Thread innerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("Inner thread goes to sleep at "+ System.currentTimeMillis() / 1000);
+                    Thread.sleep(1000 * 1000);
+                } catch (InterruptedException interruptedException) {
+                    System.out.println("Inner Thread interrupted at "+ System.currentTimeMillis() / 1000);
+                }
+            }
+        });
+        innerThread.start();
+        System.out.println("Main thread sleeping at "+ System.currentTimeMillis() / 1000);
+        Thread.sleep(5000);
+        innerThread.interrupt();
+        System.out.println("Main thread exiting at "+System.currentTimeMillis() / 1000);
+    }
+}
+```

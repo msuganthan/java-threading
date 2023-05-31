@@ -1,3 +1,10 @@
+<!-- TOC -->
+  * [ReentrantLock](#reentrantlock)
+    * [Idiomatic Use of Lock](#idiomatic-use-of-lock)
+    * [Fairness](#fairness)
+    * [Example](#example)
+<!-- TOC -->
+
 ## ReentrantLock
 
 The `ReentrantLock` implements the `Lock` interface and is functionally similar to the implicit monitor lock accessed using synchronized methods and statements.

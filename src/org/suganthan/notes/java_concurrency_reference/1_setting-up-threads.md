@@ -1,7 +1,11 @@
 <!-- TOC -->
+  * [Setting up thread](#setting-up-thread)
     * [Runnable Interface](#runnable-interface)
     * [Subclassing Thread class](#subclassing-thread-class)
 <!-- TOC -->
+
+## Setting up thread
+
 ### Runnable Interface
 
 Anonymous

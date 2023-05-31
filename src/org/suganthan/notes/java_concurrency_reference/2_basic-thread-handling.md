@@ -1,3 +1,13 @@
+<!-- TOC -->
+  * [Basics](#basics-)
+    * [Joining Threads](#joining-threads)
+    * [Daemon Threads](#daemon-threads)
+    * [Sleeping Threads](#sleeping-threads)
+    * [Interrupting Threads](#interrupting-threads)
+<!-- TOC -->
+
+## Basics 
+
 ### Joining Threads
 
 ```java

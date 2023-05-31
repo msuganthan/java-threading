@@ -1,3 +1,10 @@
+<!-- TOC -->
+  * [ThreadLocalRandom](#threadlocalrandom)
+    * [Overview](#overview)
+    * [Usage](#usage)
+    * [Difference between Random and ThreadLocalRandom](#difference-between-random-and-threadlocalrandom)
+<!-- TOC -->
+
 ## ThreadLocalRandom
 
 ### Overview

@@ -1,4 +1,8 @@
-### Timer
+<!-- TOC -->
+  * [Timer](#timer)
+<!-- TOC -->
+
+## Timer
 
 Timer uses a single thread to execute submitted tasks. Timer has a single worker thread that attempts to execute all user submitted tasks. Issues:
 

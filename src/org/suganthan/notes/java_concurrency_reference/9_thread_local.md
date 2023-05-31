@@ -1,3 +1,7 @@
+<!-- TOC -->
+  * [ThreadLocal](#threadlocal)
+<!-- TOC -->
+
 ## ThreadLocal
 
 Consider the following instance method of a class

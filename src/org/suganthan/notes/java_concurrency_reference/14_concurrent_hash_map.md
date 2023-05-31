@@ -1,3 +1,15 @@
+<!-- TOC -->
+  * [ConcurrentHashMap](#concurrenthashmap)
+    * [HashMaps and Concurrency](#hashmaps-and-concurrency)
+    * [ConcurrentHashMaps](#concurrenthashmaps)
+    * [Properties of ConcurrentHashMap](#properties-of-concurrenthashmap)
+    * [Newbie Mistakes with ConcurrentHashMap](#newbie-mistakes-with-concurrenthashmap)
+    * [Fixing with Atomic Integer](#fixing-with-atomic-integer)
+    * [Fixing with Custom Counter Class#](#fixing-with-custom-counter-class)
+    * [HashMap vs HashTable vs ConcurrentHashMap](#hashmap-vs-hashtable-vs-concurrenthashmap)
+    * [Performance](#performance)
+<!-- TOC -->
+
 ## ConcurrentHashMap
 
 ### HashMaps and Concurrency

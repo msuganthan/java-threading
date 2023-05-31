@@ -1,3 +1,7 @@
+<!-- TOC -->
+  * [Completion Service](#completion-service)
+<!-- TOC -->
+
 ## Completion Service
 
 Java offers a better way to address a scenario where you want to submit hundreds or thousands of tasks, that is through `CompletionService` interface. You can use the `ExecutorCompletionService` as a concrete implementation of the interface. 

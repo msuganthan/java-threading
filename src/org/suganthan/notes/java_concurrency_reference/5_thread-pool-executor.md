@@ -1,4 +1,27 @@
-### Overview: 
+<!-- TOC -->
+  * [Overview:](#overview-)
+  * [ThreadPoolExecutor constructor](#threadpoolexecutor-constructor)
+  * [corePoolSize and maximumPoolSize](#corepoolsize-and-maximumpoolsize)
+  * [Setting `corePoolSize` equal to `maximumPoolSize`](#setting-corepoolsize-equal-to-maximumpoolsize)
+  * [Setting `maximumPoolSize` to an arbitrary high value](#setting-maximumpoolsize-to-an-arbitrary-high-value)
+  * [Keep-alive](#keep-alive)
+  * [ThreadFactory](#threadfactory)
+  * [Queuing](#queuing)
+    * [Queuing strategies](#queuing-strategies)
+      * [Direct Handoffs(SynchronousQueue)](#direct-handoffssynchronousqueue)
+      * [Unbounded queues](#unbounded-queues)
+      * [Bounded queues](#bounded-queues)
+      * [Queue manipulation](#queue-manipulation)
+  * [Task Rejection](#task-rejection)
+    * [ThreadPoolExecutor.AbortPolicy](#threadpoolexecutorabortpolicy)
+    * [ThreadPoolExecutor.CallerRunPolicy](#threadpoolexecutorcallerrunpolicy)
+    * [ThreadPoolExecutor.DiscardPolicy](#threadpoolexecutordiscardpolicy)
+    * [ThreadPoolExecutor.DiscardOldestPolicy](#threadpoolexecutordiscardoldestpolicy)
+    * [Shutting down](#shutting-down)
+    * [Hooks](#hooks)
+<!-- TOC -->
+
+## Overview: 
 
 A thread pool is a group of threads instantiated and kept alive to execute submitted tasks. Thread pools can achieve better performance and throughput than creating an individual thread per task by circumventing the overhead associated with thread creation and destruction. Additionally, system resources can be better managed using a thread pool, which allows us to limit the number of threads in the system.
 
@@ -9,7 +32,7 @@ Generally the use of the ThreadPoolExecutor class is discouraged in the favor of
 3. Executors.newSingleThreadExecutor() => single background thread
 4. Executors.newScheduledThreadPool() => fixed size thread pool supporting delayed and period task execution.
 
-### ThreadPoolExecutor constructor
+## ThreadPoolExecutor constructor
 
 ```java
 public ThreadPoolExecutor(int corePoolSize,

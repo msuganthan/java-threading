@@ -1,3 +1,7 @@
+<!-- TOC -->
+  * [CountdownLatch](#countdownlatch)
+<!-- TOC -->
+
 ## CountdownLatch
 
 This can be used to block a single or multiple threads while other threads complete their operations.

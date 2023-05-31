@@ -1,3 +1,10 @@
+<!-- TOC -->
+  * [Lock Interface](#lock-interface)
+    * [Explanation](#explanation)
+    * [Difference between Lock and Synchronized](#difference-between-lock-and-synchronized)
+    * [Using Lock and synchronized](#using-lock-and-synchronized)
+<!-- TOC -->
+
 ## Lock Interface
 
 ### Explanation

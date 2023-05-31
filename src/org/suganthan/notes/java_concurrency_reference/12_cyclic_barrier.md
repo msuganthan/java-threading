@@ -1,3 +1,7 @@
+<!-- TOC -->
+  * [CyclicBarrier](#cyclicbarrier)
+<!-- TOC -->
+
 ## CyclicBarrier
 
 `CyclicBarrier` is a synchronization mechanism that allows multiple threads to wait for each other at a common point before continuing execution. The threads wait for each other by calling the `await()` method on the `CyclicBarrier`.

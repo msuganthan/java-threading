@@ -1,8 +1,15 @@
-### Task
+<!-- TOC -->
+  * [Task](#task)
+  * [Thread Pools](#thread-pools)
+    * [Types of Thread Pools](#types-of-thread-pools)
+    * [Lifecycle of an executor:](#lifecycle-of-an-executor)
+<!-- TOC -->
+
+## Task
 
 A task is a logical unit of work, usually a task should be independent of other tasks **so that it can be completed by a single thread**. A task can be represented by an object of a class implementing the `Runnable` interface.
 
-### Thread Pools
+## Thread Pools
 
 Thread pools in Java are implementations of the `Executor` interface or any of its sub-interfaces. Thread pools allows us to decouple task submission and execution. We have the **option of exposing an executor's configuration while deploying an application or switching one executor for another seamlessly**.
 

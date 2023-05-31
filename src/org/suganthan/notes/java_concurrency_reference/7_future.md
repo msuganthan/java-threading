@@ -1,3 +1,7 @@
+<!-- TOC -->
+  * [Future interface](#future-interface)
+<!-- TOC -->
+
 ## Future interface
 
 The `Future` interface is used to represent to result of an asynchronous computation. The interface also provides methods to check the status of the submitted task and also allows the task to be cancelled if possible.

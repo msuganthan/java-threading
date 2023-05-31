@@ -1,3 +1,12 @@
+<!-- TOC -->
+  * [ReadWriteLock](#readwritelock)
+    * [ReentrantReadWriteLock](#reentrantreadwritelock)
+    * [Fair Mode](#fair-mode)
+    * [Cache Example](#cache-example)
+    * [Downgrading to Read Lock](#downgrading-to-read-lock)
+    * [Reentrancy](#reentrancy)
+<!-- TOC -->
+
 ## ReadWriteLock
 
 The `ReadWriteLock` interface is part of Java's `java.util.concurrent.locks` package. The only implementing class for the interface is `ReentrantReadWriteLock`. The `ReentrantReadWriteLock` can be locked by **multiple readers at the same while writer threads have to wait.** Conversely, the `ReentrantReadWriteLock` can be locked by a **single writer thread at a time and other writer or reader threads have to wait for the lock to be free.**

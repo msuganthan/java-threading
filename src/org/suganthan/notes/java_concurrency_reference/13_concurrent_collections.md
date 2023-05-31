@@ -1,3 +1,11 @@
+<!-- TOC -->
+  * [Concurrent Collections](#concurrent-collections)
+    * [Copy on Write:](#copy-on-write)
+    * [Compare and Swap:](#compare-and-swap-)
+    * [Lock](#lock)
+    * [CopyOnWrite Example](#copyonwrite-example)
+<!-- TOC -->
+
 ## Concurrent Collections
 
 To cater for multithreaded scenarios, the framework provided static methods to wrap vanilla collections in thread-safe wrapper objects. These thread-safe wrapper objects came to be known as wrapper collections.

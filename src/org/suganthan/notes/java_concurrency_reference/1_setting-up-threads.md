@@ -1,3 +1,7 @@
+<!-- TOC -->
+    * [Runnable Interface](#runnable-interface)
+    * [Subclassing Thread class](#subclassing-thread-class)
+<!-- TOC -->
 ### Runnable Interface
 
 Anonymous

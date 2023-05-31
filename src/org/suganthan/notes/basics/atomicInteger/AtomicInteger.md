@@ -1,3 +1,0 @@
-The `AtomicInteger` class represents an integer value that can be updated automatically, i.e. the read-modify-write operation can be executed atomically upon an instance of `AtomicInteger`. It makes for great counters as it uses the **Compare-And-Swap** instruction under the hood which doesn't penalize threads competing for access to the same data with suspension as locks do.
-
-In general, **suspension and resumption of threads involves significant overhead** and **under low to moderate contention non-blocking algorithms that use CAS outperform lock-based alternatives.**.

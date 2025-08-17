@@ -3,44 +3,82 @@ package org.suganthan.threadingproblems.blockingQueue;
 public class BlockingQueueImplementation {
 
     public static void main(String[] args) throws InterruptedException {
-        final BlockingQueue<Integer> queue = new BlockingQueue<>(5);
+        final BlockingQueue<Integer> q = new BlockingQueue<>(5);
 
-        var t1 = new Thread(() -> {
-           try {
-               for (int i = 0; i < 50; i++) {
-                   queue.enqueue(i);
-               }
-           } catch (InterruptedException e) {
-               System.err.println(e);
-           }
-        });
-
-        var t2 = new Thread(() -> {
-            try {
-                for (int i = 0; i < 25; i++) {
-                    queue.dequeue();
+        var producer1 = new Thread(() -> {
+            for (int i = 0; i < 50; i++) {
+                try {
+                    q.enqueue(i);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (InterruptedException e) {
-                System.err.println(e);
             }
         });
 
-        var t3 = new Thread(() -> {
-            try {
-                for (int i = 0; i < 25; i++) {
-                    queue.dequeue();
+        var producer2 = new Thread(() -> {
+            for (int i = 100; i < 150; i++) {
+                try {
+                    q.enqueue(i);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (InterruptedException e) {
-                System.err.println(e);
             }
         });
 
-        t1.start();
-        t2.start();
-        t2.join();
+        var producer3 = new Thread(() -> {
+            for (int i = 200; i < 250; i++) {
+                try {
+                    q.enqueue(i);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
-        t3.start();
-        t1.join();
-        t3.join();
+        var consumer1 = new Thread(() -> {
+            for (int i = 0; i < 50; i++) {
+                try {
+                    q.dequeue();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        var consumer2 = new Thread(() -> {
+            for (int i = 0; i < 50; i++) {
+                try {
+                    q.dequeue();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        var consumer3 = new Thread(() -> {
+            for (int i = 0; i < 50; i++) {
+                try {
+                    q.dequeue();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        producer1.start();
+        producer2.start();
+        producer3.start();
+
+        consumer1.start();
+        consumer2.start();
+        consumer3.start();
+
+        producer1.join();
+        producer2.join();
+        producer3.join();
+
+        consumer1.join();
+        consumer2.join();
+        consumer3.join();
     }
 }

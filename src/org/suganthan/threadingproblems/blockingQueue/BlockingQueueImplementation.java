@@ -5,34 +5,33 @@ public class BlockingQueueImplementation {
     public static void main(String[] args) throws InterruptedException {
         final BlockingQueue<Integer> queue = new BlockingQueue<>(5);
 
-        Thread t1 = new Thread(() -> {
+        var t1 = new Thread(() -> {
            try {
                for (int i = 0; i < 50; i++) {
                    queue.enqueue(i);
-                   System.out.println("enqueued "+i);
                }
            } catch (InterruptedException e) {
-
+               System.err.println(e);
            }
         });
 
-        Thread t2 = new Thread(() -> {
+        var t2 = new Thread(() -> {
             try {
                 for (int i = 0; i < 25; i++) {
-                    System.out.println("Thread 2 deQueued: "+ queue.dequeue());
+                    queue.dequeue();
                 }
-            } catch (InterruptedException ie) {
-
+            } catch (InterruptedException e) {
+                System.err.println(e);
             }
         });
 
-        Thread t3 = new Thread(() -> {
+        var t3 = new Thread(() -> {
             try {
                 for (int i = 0; i < 25; i++) {
-                    System.out.println("Thread 3 deQueued: " + queue.dequeue());
+                    queue.dequeue();
                 }
-            } catch (InterruptedException ie) {
-
+            } catch (InterruptedException e) {
+                System.err.println(e);
             }
         });
 
